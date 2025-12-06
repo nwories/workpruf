@@ -20,7 +20,7 @@
     margin: 12px 0;
     margin-left: 26px;
     border-radius: 20px;
-    background-image: linear-gradient(to bottom, rgba(45, 95, 245, 0.3), #0e1e30), url(/assets/img/2c0cf5b52655a1c2fd8a96a181fcbf85ee74a8c1.jpg);
+    background-image: linear-gradient(to bottom, rgba(45, 95, 245, 0.3), #0e1e30), url(../assets/img/2c0cf5b52655a1c2fd8a96a181fcbf85ee74a8c1.jpg);
     background-size: cover;
     background-position: center;
 }
