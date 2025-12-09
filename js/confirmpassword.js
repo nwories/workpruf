@@ -1,8 +1,8 @@
-const inputEmail = document.querySelector('.input-email');
-const emailError = document.querySelector('.email-err');
 const inputPassword = document.querySelector('.input-password');
+const inputPassword2 = document.querySelector('.input-password2');
 const passwordError = document.querySelector('.password-err');
 const eyeIcon = document.getElementById('eye-icon');
+const eyeIcon2 = document.getElementById('eye-icon2');
 const submitButton = document.getElementById('submit-btn');
 const form = document.getElementById('form');
 
@@ -29,14 +29,27 @@ const togglePassword = () => {
     eyeIcon.classList.add('fa-eye-slash')
   }
 };
+const togglePassword2 = () => {
+  if(inputPassword2.type === 'password') {
+    inputPassword2.type = 'text'
+    eyeIcon2.classList.remove('fa-eye-slash')
+    eyeIcon2.classList.add('fa-eye')
+  } else {
+    inputPassword2.type = 'password'
+    eyeIcon2.classList.remove('fa-eye')
+    eyeIcon2.classList.add('fa-eye-slash')
+  }
+};
 
 // function to check password strength
 function validatePassword() {
   // check password strength
   const minPasswordLength = 8;
-  const password = inputPassword.value;
+  const password = inputPassword2.value;
   passwordError.textContent = ''
   passwordError.style.color = 'red'
+  passwordError.style.marginTop = '-20px'
+  passwordError.style.marginBottom = '10px'
   passwordError.style.fontSize = '12px'
   if(!password){
     passwordError.style.display = 'none'
@@ -49,88 +62,42 @@ function validatePassword() {
   }
   passwordError.textContent = 'Password is strong'
   passwordError.style.color = 'green'
+
+  if(password.length >= minPasswordLength) {
+    document.getElementById(icon1).innerHTML = 'come'
+  }
   return true;
 }
 
-// function to validate email
-function validateEmail() {
-  const email = inputEmail.value;
-  emailError.textContent = ''
-  emailError.style.color = 'red'
-  emailError.style.fontSize = '12px'
-  if(!email){
-    emailError.style.display = 'none'
-  } else {
-    emailError.style.display = 'block'
-  }
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if(!emailRegex.test(email)) {
-    emailError.textContent = 'Invalid email address'
-    return false;
-  }
-  emailError.textContent = 'Email is valid'
-  emailError.style.color = 'green'
-  return true;
-}
+
 
 // adding event listener to components
 eyeIcon.addEventListener('click', togglePassword);
+eyeIcon2.addEventListener('click', togglePassword2);
 submitButton.addEventListener('click', btnActive);
-inputEmail.addEventListener('focus', btnActive);
-inputEmail.addEventListener('blur', btnInActive);
 inputPassword.addEventListener('focus', btnActive);
 inputPassword.addEventListener('blur', btnInActive);
-inputPassword.addEventListener('input', validatePassword)
-inputEmail.addEventListener('input', validateEmail)
+// inputPassword.addEventListener('input', validatePassword)
+inputPassword2.addEventListener('focus', btnActive);
+inputPassword2.addEventListener('blur', btnInActive);
+inputPassword2.addEventListener('input', validatePassword)
 
-// handle form submission
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  let isValid = true;
-  // check email and password
-  if(!inputEmail.value || !inputPassword.value) {
-    passwordError.textContent = 'email or password should not be empty'
+  // check email
+  if(!inputPassword.value && !inputPassword2.value) {
+    passwordError.textContent = 'password should not be empty'
     passwordError.style.color = 'red'
     passwordError.style.display = 'block'
-    isValid = false
     return
   }
   passwordError.style.display = 'none'
-  if(!validateEmail() || !validatePassword()) {
-    passwordError.textContent = 'invalid email or password'
+  if(!validatePassword()) {
+    passwordError.textContent = 'invalid password'
     passwordError.style.color = 'red'
     passwordError.style.display = 'block'
-    isValid = false
     return
   }
-  
-  if(isValid) {
-    // submit the form
-    // fetch login data
-    // fetch('/api/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({password})
-    // })
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   if(data.success) {
-    //     passwordError.textContent = 'password reset successful'
-    //     you can redirect to password-reset-successful-page
-    //   } else {
-    //     passwordError.textContent = 'login error' + data.error
-    //   }
-    // })
-    // .catch((error) => {
-    //   console.error('Error', error)
-    // })
-  console.log('valid')
-  return
-  } else {
-    console.log('invalid');
-    return
-  }
+  // redirect to password page
+  window.location.href = 'passwordsuccess.html?password=' + inputPassword.value;
 });
