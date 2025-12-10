@@ -62,10 +62,6 @@ function validatePassword() {
   }
   passwordError.textContent = 'Password is strong'
   passwordError.style.color = 'green'
-
-  if(password.length >= minPasswordLength) {
-    document.getElementById(icon1).innerHTML = 'come'
-  }
   return true;
 }
 
