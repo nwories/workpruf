@@ -21,12 +21,10 @@ const btnInActive = () => {
 const togglePassword = () => {
   if(inputPassword.type === 'password') {
     inputPassword.type = 'text'
-    eyeIcon.classList.remove('fa-eye-slash')
-    eyeIcon.classList.add('fa-eye')
+    eyeIcon.src = 'assets/icon/ph_eye.svg'
   } else {
     inputPassword.type = 'password'
-    eyeIcon.classList.remove('fa-eye')
-    eyeIcon.classList.add('fa-eye-slash')
+    eyeIcon.src = 'assets/icon/mdi_eye-off-outline.svg'
   }
 };
 
