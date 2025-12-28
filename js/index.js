@@ -125,7 +125,7 @@ form.addEventListener('submit', (e) => {
     // .catch((error) => {
     //   console.error('Error', error)
     // })
-  console.log('valid')
+  window.location.href = '../pages/dashboards/superadmin_dashboard_overview.html?email=' + inputEmail.value;
   return
   } else {
     console.log('invalid');
