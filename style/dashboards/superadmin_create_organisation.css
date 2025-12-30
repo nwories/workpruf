@@ -353,7 +353,42 @@ option{
     color: #333333;
     background-color: #E8E8E8;
 }
+.email-verify{
+    margin-right: 25px;
+}
+/* button to toggle email and location verification */
+.toggle-container{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 170px;
+}
+.toggle-container .toggle{
+    width: 40px;
+    height: 22.5px;
+    background: #3550DC;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.toggle-container .toggle 
+span{
+    width: 22px;
+    height: 22.5px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+.toggle .toggle-on{
+    right: 0;
+    display: block;
+}
+.toggle .toggle-off{
+    display: none;
+}
 
+/* Invite & System Automation section */
 
 /* FOOTER */
 footer{
